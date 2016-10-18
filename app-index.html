@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			.mui-slider-item a{
+				display: inline !important;
+			}
+			.mui-scroll a{
+				line-height: 25px !important
+			}
+			/**图片轮播高***/
+			#slider-index a img{
+				height: 200px;
+			}
+			#scroll ul li a {
+				height: 25px;
+			}
+		
+			
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div style="height:25px;" id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+						<a class="mui-control-item mui-active" href="#news">
+							最新  
+						</a>
+						<a class="mui-control-item" href="#sticky">
+							精华
+						</a>
+						<a class="mui-control-item" href="#video">
+							视频
+						</a>
+						<a class="mui-control-item" href="#pic">
+							图片
+						</a>
+						<a class="mui-control-item" href="#text">
+							段子
+						</a>
+						<a class="mui-control-item" href="#rank">
+							排行
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-group" style="top:25px">
+					<div id="news" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div id="slider-index" class="mui-slider">
+										<div id="slider_box" class="mui-slider-group mui-slider-loop">
+											<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+											<div class="mui-slider-item mui-slider-item-duplicate">
+												<a href="#">
+													<img src="">
+													<p class="mui-slider-title"></p>
+												</a>
+											</div>
+											<div class="mui-slider-item">
+												<a href="#">
+													<img src="">
+													<p class="mui-slider-title"></p>
+												</a>
+											</div>
+											<div class="mui-slider-item">
+												<a href="#">
+													<img src="">
+													<p class="mui-slider-title"></p>
+												</a>
+											</div>
+											<div class="mui-slider-item">
+												<a href="#">
+													<img src="">
+													<p class="mui-slider-title"></p>
+												</a>
+											</div>
+											<div class="mui-slider-item">
+												<a href="#">
+													<img src="">
+													<p class="mui-slider-title"></p>
+												</a>
+											</div>
+											<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+											<div class="mui-slider-item mui-slider-item-duplicate">
+												<a href="#">
+													<img src="">
+													<p class="mui-slider-title"></p>
+												</a>
+											</div>
+											</div>
+									</div>
+								<ul class="mui-table-view" id="ar_list">	
+									<!--<li class="mui-table-view-cell">
+									<div class="mui-card" style="width: 100%;margin: 0px auto;">
+						<div class="mui-card-header mui-card-media">
+						<img style="width: auto;" src="http://www.bixiejianpu.com/Public/face/f_noface.png">
+						<div class="posts_head">老辟<p>发表于 2016-06-30 15:30</p></div>
+						<div class="posts_title">标题标题标题标题</div></div>
+						<div class="mui-card-content showType">
+						内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
+						<div class="mui-card-footer"><a class="mui-card-link">
+						<span class="mui-icon iconfont icon-dianzan1"></span></a>
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>
+						</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="sticky" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="video" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="pic" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="text" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="rank" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.pullToRefresh.js"></script>
+		<script src="js/mui.pullToRefresh.material.js"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			//幻灯片播放时间间隔
+			var slider = mui("#slider-index");
+			slider.slider({
+				interval: 5000
+			});
+			var page = 1;
+			function	 callRequest($,category){
+				var reData = 'redata';
+				//ajax
+				var network = true;
+				//检查网络情况
+				if(mui.os.plus){
+					mui.plusReady(function () {
+						if(plus.networkinfo.getCurrentType()==plus.networkinfo.CONNECTION_NONE){
+							network = false;
+						}
+					});
+				}
+				//设置全局beforeSend 
+				$.ajaxSettings.beforeSend = function(xhr, setting) {
+					//beforeSend演示,也可在$.ajax({beforeSend:function(){}})中设置单个Ajax的beforeSend
+					console.log('beforeSend:::' + JSON.stringify(setting));
+				};
+				//设置全局complete
+				$.ajaxSettings.complete = function(xhr, status) {
+					console.log('complete:::' + status);
+				}
+				//每页条数
+				var limit = 5;
+				var item =  document.querySelector('#'+category);
+				var ul = item.querySelector('.mui-table-view');
+				var lastId = 0;
+				var liItem = item.querySelectorAll('.mui-table-view-cell');
+				if( liItem.length !=0 ){
+					var liCount = liItem.length-1;
+					lastId = liItem[liCount].getAttribute('article_id');
+					page ++;
+				}
+				if(network){
+					$.ajax('http://www.bixiejianpu.com/Api/get_article_list',{
+						data:{
+							category:category,
+							limit:5,
+							last_id:lastId,
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'get',//HTTP请求类型
+						//async:false,
+						success:function(data){
+							//获得服务器响应
+							response = JSON.stringify(data.data);
+							//alert(response);
+							reData = response;
+							//return reData;
+							var item =  document.querySelector('#'+category);
+							var ul = item.querySelector('.mui-table-view');
+							ul.appendChild(createFragment(ul, 1, 5,null,data.data));
+						},
+						error:function(xhr,type,errorThrown){
+							//异常处理；
+							mui.toast("当前网络不给力，请稍后再试");
+						}
+					});
+				}else{
+					mui.toast("当前网络不给力，请稍后再试");
+				}
+				return reData;
+			}
+			
+			function callRequestSlide($){
+				var network = true;
+				//检查网络情况
+				if(mui.os.plus){
+					mui.plusReady(function () {
+						if(plus.networkinfo.getCurrentType()==plus.networkinfo.CONNECTION_NONE){
+							network = false;
+						}
+					});
+				}
+				
+				if(network){
+					$.ajax('http://www.bixiejianpu.com/Api/get_slide_list',{
+						dataType:'json',//服务器返回json格式数据
+						type:'get',//HTTP请求类型
+						async:true,
+						success:function(data){
+							//获得服务器响应
+							response = JSON.stringify(data.data);
+							reData = data.data.slide_list; 
+							//return reData;
+							//var item =  document.querySelector('#'+category);
+							//var ul = item.querySelector('.mui-table-view');
+							//ul.appendChild(createFragment(ul, 1, 5,null,data.data));
+							createSlidList(reData); 
+						},
+						error:function(xhr,type,errorThrown){
+							//异常处理；
+							mui.toast("当前网络不给力，请稍后再试");
+						}
+					});
+				}else{
+					mui.toast("当前网络不给力，请稍后再试");
+				}
+			}
+			(function($) {
+				//初始化幻灯片
+				callRequestSlide($);
+				
+				//初始化列表
+				callRequest($,"news");
+				callRequest($,"sticky");
+				callRequest($,"video");
+				callRequest($,"pic");
+				callRequest($,"text");
+				callRequest($,"rank");
+				//阻尼系数
+				var deceleration = mui.os.ios?0.0015:0.0001;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: true,
+					indicators: true, //是否显示滚动条
+					deceleration:deceleration
+				});
+				//点击文章事件
+				$(".mui-table-view").on('tap','.mui-table-view-cell',function(){
+				  //获取aid
+				  var aid = this.getAttribute("article_id");
+				  mui.openWindow({
+					    url:"app-article-desc.html",
+					    id:aid,
+					    styles:{
+					      top:0,//新页面顶部位置
+					      bottom:0,//新页面底部位置
+					    },
+					    extras:{
+					    		aid:aid
+					      //自定义扩展参数，可以用来处理页面间传值
+					    },
+					    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					    show:{
+					      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+					      aniShow:"zoom-fade-out",//页面显示动画，默认为”slide-in-right“；
+					      duration:400//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+					    },
+					    waiting:{
+					      autoShow:true,//自动显示等待框，默认为true
+					      title:'正在加载...',//等待对话框上显示的提示内容
+					      options:{
+					        //width:waiting-dialog-widht,//等待框背景区域宽度，默认根据内容自动计算合适宽度
+					        //height:waiting-dialog-height,//等待框背景区域高度，默认根据内容自动计算合适高度
+					      }
+					    }
+					})
+				});
+				
+				$.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+							down: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										var category = ul.parentNode.parentNode.parentNode.id;
+										//刷新清空已有文章
+										ul.innerHTML="";
+										//ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
+										callRequest($,category);
+										self.endPullDownToRefresh();
+										
+									}, 1000);
+								}
+							},
+							up: {		
+								callback: function() {
+									var self = this;
+									var ul = self.element.querySelector('.mui-table-view');
+									//清空3页之前的文章
+									var item = ul.querySelectorAll('li');
+									var limit = 5;
+									var dt = 600;
+									if( item.length >limit*4 ){
+										for(i=0;i<limit*3;i++){
+											item[i].remove();
+										}
+										dt = 100;	
+									}
+									setTimeout(function() {
+										//ul.appendChild(createFragment(ul, index, 5));
+										var category = ul.parentNode.parentNode.parentNode.id;
+										self.endPullUpToRefresh();
+										//加载
+										callRequest($,category);
+									}, dt);
+								}
+							}
+						});
+					});
+				});
+			})(mui);
+			var createSlidList = function(slideList){
+				var fragment = document.createDocumentFragment();
+				var slideIndex = document.createElement('div');
+				//slideIndex.className = "mui-slider-group mui-slider-loop";
+				var slideBox =  document.querySelector('#slider_box');
+				//slideBox.innerHTML = '';
+				//alert(slideBox.innerHTML);
+				var childs = slideBox.childNodes;
+				var i= 0;
+				var slideNum = 4;
+				for( var j=0;j<childs.length;j++ ){
+					if( typeof(childs[j].innerHTML ) != 'undefined'){
+						childs[j].innerHTML = '<a href="#"><img src="'+slideList[i].img+'"><p class="mui-slider-title">'+slideList[i].title+'</p></a>';
+						if( i==slideNum-1 ){
+							i = 0;
+						}else{
+							i++;
+						}
+					}
+				}
+				fragment.appendChild(slideIndex); 
+				slideBox.appendChild(fragment); 
+			}
+			
+			//嵌套数据
+			var createFragment = function(ul, index, count, reverse,data) {
+				var length = ul.querySelectorAll('li').length;
+				var fragment = document.createDocumentFragment();
+				var li;
+				var articleList = data.article_list;
+				for (var i = 0; i < articleList.length; i++) {
+					var content = articleList[i].content;
+					var pic = articleList[i].pic;
+					var video_type = articleList[i].video_type;
+					var title = articleList[i].title;
+					var pid = articleList[i].pid;
+					var mpic = articleList[i].mpic;
+					var showType = articleList[i].show_type;
+					var showTypeClass = '';
+					if( showType > 1 ){
+						showTypeClass = "showType";
+					}
+					
+					li = document.createElement('li');
+					li.className = 'mui-table-view-cell';
+					li.setAttribute('article_id',articleList[i].id);
+					if( video_type == 2 ){
+						//视频 
+						var video = articleList[i].video;
+						var video_poster = articleList[i].video_poster;
+						li.innerHTML='<div class="mui-card" style="width: 100%;margin: 0px auto;">\
+						<div class="mui-card-header mui-card-media">\
+						<img style="width: auto;" src="http://www.bixiejianpu.com/Public/face/f_noface.png">\
+						<div class="posts_head">老辟<p>发表于 '+articleList[i].time+'</p></div>\
+						<div class="posts_title">'+title+'</div></div>\
+						<div class="mui-card-content">\
+						<video id="vjs_18434285_html5_api"\
+	                   		data-id="{YICMS:$list.id}"\
+	                   		class="topic-xx-video x-video j-player"\
+	                   		data-tag="{YICMS:$list.time}/{YICMS:$list.title}|18434285|无"\
+	                   		width="100%"\
+	                   		poster="'+video_poster+'"\
+	                   		webkit-playsinline\
+	                   		x-webkit-airplay="true"\
+	                  		webkit-playsinline="true"\
+	                   		controls preload="none">\
+	                			<source src="'+video+'" type="video/mp4">\
+	            				</video>\
+	            				</div>\
+	            				<div class="mui-card-footer"><a class="mui-card-link">\
+							<span class="mui-icon iconfont icon-dianzan1"></span></a>\
+							<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>\
+							<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>';
+					}else if( pic != '' ){
+						//单图
+						 li.innerHTML='<div class="mui-card" style="width: 100%;margin: 0px auto;">\
+						<div class="mui-card-header mui-card-media">\
+						<img style="width: auto;" src="http://www.bixiejianpu.com/Public/face/f_noface.png">\
+						<div class="posts_head">老辟<p>发表于 '+articleList[i].time+'</p></div>\
+						<div class="posts_title">'+title+'</div></div>\
+						<div class="mui-card-content '+showTypeClass+'">\
+						<img src="'+mpic+'"/></div>\
+						<div class="mui-card-footer"><a class="mui-card-link">\
+						<span class="mui-icon iconfont icon-dianzan1"></span></a>\
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>\
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>';
+					}else if( content != '' ){
+						if( pid == 2 ){
+							//文字
+							li.innerHTML='<div class="mui-card" style="width: 100%;margin: 0px auto;">\
+							<div class="mui-card-header mui-card-media">\
+							<img style="width: auto;" src="http://www.bixiejianpu.com/Public/face/f_noface.png">\
+							<div class="posts_head">老辟<p>发表于 2016-06-30 15:30</p></div></div>\
+							<div class="mui-card-content">\
+							'+content+'</div>\
+							<div class="mui-card-footer"><a class="mui-card-link">\
+							<span class="mui-icon iconfont icon-dianzan1"></span></a>\
+							<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>\
+							<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>';
+						}else{
+							//图文
+							li.innerHTML='<div class="mui-card" style="width: 100%;margin: 0px auto;">\
+							<div class="mui-card-header mui-card-media">\
+							<img style="width: auto;" src="http://www.bixiejianpu.com/Public/face/f_noface.png">\
+							<div class="posts_head">老辟<p>发表于 '+articleList[i].time+'</p></div>\
+							<div class="posts_title">'+title+'</div></div>\
+							<div class="mui-card-content '+showTypeClass+'">\
+							'+content+'</div>\
+							<div class="mui-card-footer"><a class="mui-card-link">\
+							<span class="mui-icon iconfont icon-dianzan1"></span></a>\
+							<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>\
+							<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>';
+						}
+					} 
+					fragment.appendChild(li);
+				} 
+				return fragment;
+			};
+		</script> 
+	</body>
+</html>

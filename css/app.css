@@ -1,0 +1,78 @@
+/*
+ *这是单独为hello mui准备的个性化css，可以覆盖标准mui的css定义；
+ * 在实际项目开发时，建议为App单独写一个css文件，从而实现项目的自定义皮肤功能；
+ * 
+ * */
+@font-face {font-family: 'webfont';
+  src: url('//at.alicdn.com/t/1lgcls55lrawz5mi.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/1lgcls55lrawz5mi.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/1lgcls55lrawz5mi.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/1lgcls55lrawz5mi.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/1lgcls55lrawz5mi.svg#NotoSansHans-DemiLight') format('svg'); /* iOS 4.1- */
+}
+@font-face {font-family: 'webfont1';
+  src: url('//at.alicdn.com/t/i3s487irgzctmx6r.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/i3s487irgzctmx6r.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/i3s487irgzctmx6r.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/i3s487irgzctmx6r.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/i3s487irgzctmx6r.svg#NotoSansHans-Black') format('svg'); /* iOS 4.1- */
+}
+
+.mui-plus.mui-android header.mui-bar{
+	display: none;
+}
+.mui-plus.mui-android .mui-bar-nav~.mui-content{
+	padding: 0;
+}
+.mui-table-view li{
+	padding: 11px 5px !important
+}
+.posts_head{
+	margin-bottom: 0;
+	margin-left: 44px;
+	font-size: 12px;
+	font-weight: 100;
+	line-height: 17px;
+	color: #898989;
+}
+.posts_head p{
+	font-size: 12px;
+	font-weight: 100;
+	color: #898989;
+}
+.posts_title{
+	color: #262829 !important
+}
+
+.showType{
+	height: 400px !important;
+	overflow: hidden !important	
+}
+/*文章详情页*/
+.article_desc{
+}
+.article_desc .title{
+	margin-top: 10px;
+	text-align: center;
+	font-family: "webfont";
+}
+.article_desc .title .main_tit{
+	font-size: 18px !important;
+	color: #333333 !important;
+}
+.article_desc .title .sub_tit{
+	font-size: 12px;
+	color: #C0C0C0;
+}
+.article_desc img{
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+.article_desc .mui-card-content{
+	margin: 5px 5px;
+}
+.article_desc .mui-card{
+	margin: 0px !important;
+}
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<title></title>
+		<script src="js/mui.min.js"></script>
+	</head>
+	<body class="mui-action-back">
+		<div id="article_desc" class="mui-scroll-wrapper article_desc">
+			<div class="mui-scroll">
+			<div class="title">
+				<p id="m_tit" class="main_tit">正在拼命加载中...</p>
+				<span id="s_tit" class="sub_tit">老辟 刚刚发布</span>
+			</div>
+			<div class="mui-card" style="">
+				<div class="mui-card-content">
+<!--					<img class='bdj_img' src='http://img.wechatkan.com/bdj/2016-09-04/20160904_58424d6e24b11780e710dd315c928752.jpg'>
+-->				</div>
+				<div class="mui-card-footer"><a class="mui-card-link">
+					<span class="mui-icon iconfont icon-dianzan1"></span></a>
+					<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>
+					<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a>
+				</div>
+			</div>
+			</div>
+		</div>
+		<script>
+			function	 callRequest($,aid){
+				var reData = 'redata';
+				//ajax
+				var network = true;
+				//检查网络情况
+				if(mui.os.plus){
+					mui.plusReady(function () {
+						if(plus.networkinfo.getCurrentType()==plus.networkinfo.CONNECTION_NONE){
+							network = false;
+						}
+					});
+				}
+				//设置全局beforeSend 
+				$.ajaxSettings.beforeSend = function(xhr, setting) {
+					//beforeSend演示,也可在$.ajax({beforeSend:function(){}})中设置单个Ajax的beforeSend
+					console.log('beforeSend:::' + JSON.stringify(setting));
+				};
+				//设置全局complete
+				$.ajaxSettings.complete = function(xhr, status) {
+					console.log('complete:::' + status);
+				}
+				
+				if(network){
+					$.ajax('http://www.bixiejianpu.com/Api/get_article',{
+						data:{
+							aid:aid,
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'get',//HTTP请求类型
+						//async:false,
+						success:function(data){
+							//获得服务器响应
+							response = JSON.stringify(data.data);
+							//alert(response);
+							reData = response;
+							//return reData;
+							var content =  document.querySelector('.article_desc');
+							content.appendChild(createFragment(content,data.data));
+						},
+						error:function(xhr,type,errorThrown){
+							//异常处理；
+							mui.toast("当前网络不给力，请稍后再试");
+						}
+					});
+				}else{
+					mui.toast("当前网络不给力，请稍后再试");
+				}
+				return reData;
+			}
+			//嵌套数据
+			var createFragment = function(ul,data) {
+				var fragment = document.createDocumentFragment();
+				var article = data.article;
+				var content = article.content;
+				var pic = article.pic;
+				var video_type = article.video_type;
+				var title = article.title;
+				var pid = article.pid;
+				var mpic = article.mpic;
+				var mtit = document.querySelector('#m_tit');
+				//标题
+				mtit.textContent=title;
+				var muicard = document.querySelector('.mui-card');
+
+				var div = document.createElement('div');
+				div.className = 'mui-card';
+				div.setAttribute('article_id',article.id);
+				div.setAttribute('style','width: 100%;margin: 0px auto;');
+				if( video_type == 2 ){
+					//视频 
+					var video = article.video;
+					var video_poster = article.video_poster;
+					muicard.innerHTML='<div class="mui-card">\
+					<div class="mui-card-content">\
+					<video id="vjs_18434285_html5_api"\
+                   		data-id="'+article.id+'"\
+                   		class="topic-xx-video x-video j-player"\
+                   		data-tag="'+article.id+'"\
+                   		width="100%"\
+                   		poster="'+video_poster+'"\
+                   		webkit-playsinline\
+                   		x-webkit-airplay="true"\
+                  		webkit-playsinline="true"\
+                   		controls preload="none">\
+                			<source src="'+video+'" type="video/mp4">\
+            				</video>\
+            				</div>\
+            				<div class="mui-card-footer"><a class="mui-card-link">\
+						<span class="mui-icon iconfont icon-dianzan1"></span></a>\
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>\
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>';
+				}else if( pic != '' ){
+					//单图
+					 muicard.innerHTML='<div class="mui-card">\
+					<div class="mui-card-content">\
+					<img src="'+mpic+'"/></div>\
+					<div class="mui-card-footer"><a class="mui-card-link">\
+					<span class="mui-icon iconfont icon-dianzan1"></span></a>\
+					<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>\
+					<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>';
+				}else if( content != '' ){
+					if( pid == 2 ){
+						//文字
+						muicard.innerHTML='<div class="mui-card">\
+						<div class="mui-card-content">\
+						'+content+'</div>\
+						<div class="mui-card-footer"><a class="mui-card-link">\
+						<span class="mui-icon iconfont icon-dianzan1"></span></a>\
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>\
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>';
+					}else{
+						//图文
+						muicard.innerHTML='<div class="mui-card m0">\
+						<div class="mui-card-content m10-5">\
+						'+content+'</div>\
+						<div class="mui-card-footer"><a class="mui-card-link">\
+						<span class="mui-icon iconfont icon-dianzan1"></span></a>\
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-zf"></span></a>\
+						<a class="mui-card-link"><span class="mui-icon iconfont icon-pinglun6"></span></a></div></div>';
+						 
+					} 
+					//fragment.appendChild(div);
+				} 
+				return fragment;
+			};
+			
+			(function($){
+				//阻尼系数
+				var deceleration = mui.os.ios?0.0015:0.0001;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: true,
+					indicators: true, //是否显示滚动条
+					deceleration:deceleration
+				});
+				 mui.plusReady(function(){
+             		// 在这里调用plus api
+             		var self = plus.webview.currentWebview();
+             		var aid = self.aid;
+             		if( aid > 1 ){
+             			callRequest($,aid);
+             		}
+        		});
+			})(mui);
+		</script>
+	</body>
+</html>
